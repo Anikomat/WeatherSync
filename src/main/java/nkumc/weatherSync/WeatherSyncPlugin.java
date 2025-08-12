@@ -52,7 +52,7 @@ public class WeatherSyncPlugin extends JavaPlugin implements Listener {
             public void run() {
                 syncWeatherAsync();
             }
-        }.runTaskTimerAsynchronously(this, 20, 20 * 60 * syncIntervalMinutes);
+        }.runTaskTimerAsynchronously(this, 20, 20L * 60 * syncIntervalMinutes);
 
         // 时间同步任务（主线程，每秒）
         new BukkitRunnable() {
@@ -77,7 +77,7 @@ public class WeatherSyncPlugin extends JavaPlugin implements Listener {
 
     private World getWorldOrDefault() {
         World world = Bukkit.getWorld(worldName);
-        if (world == null) world = Bukkit.getWorlds().get(0);
+        if (world == null) world = Bukkit.getWorlds().getFirst();
         return world;
     }
 
