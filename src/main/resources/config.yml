@@ -1,0 +1,6 @@
+apikey: "请填写你的OpenWeatherMapAPIKEY"
+lat: 39.1171
+lon: 117.1806
+sync-interval-minutes: 30
+forecast-count: 3
+world: "world"

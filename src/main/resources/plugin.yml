@@ -1,0 +1,7 @@
+name: WeatherSync
+main: nkumc.weatherSync.WeatherSyncPlugin
+version: 1.0
+api-version: 1.21
+commands:
+  weatherreload:
+    description: 重新加载天气插件配置
