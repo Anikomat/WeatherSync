@@ -160,12 +160,13 @@ public class WeatherSyncPlugin extends JavaPlugin implements Listener {
         int minute = now.getMinute();
         int second = now.getSecond();
 
-        // tick: 0 = 0:00, 6000 = 6:00, 12000 = 12:00, 18000 = 18:00, 24000 = 24:00
-        // 1小时=1000tick, 1分钟=16.666tick, 1秒≈0.277tick
-        long time = ((hour * 1000) + (minute * 1000L / 60) + (second * 1000L / 3600)) % 24000;
+        // 1小时=1000tick，1分钟≈16.666tick，1秒≈0.277tick
+        long tick = ((hour * 1000L) + (minute * 1000L / 60) + (second * 1000L / 3600)) - 6000;
+        if (tick < 0) tick += 24000; // 防止负数
 
+        long finalTick = tick;
         Bukkit.getScheduler().runTask(this, () -> {
-            world.setTime(time);
+            world.setTime(finalTick);
         });
     }
 
